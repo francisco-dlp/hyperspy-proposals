@@ -91,7 +91,7 @@ A proposal can target multiple branches if needed (e.g., deprecation in `RELEASE
 
 ## For AI agents
 
-AI coding assistants (Claude, GPT, Copilot, etc.) working on HyperSpy should:
+AI coding assistants working on HyperSpy should:
 
 1. **Check this repository** for existing proposals related to their task
 2. **If no proposal exists** for a non-trivial AI-assisted change: create one before writing code
