@@ -91,12 +91,7 @@ A proposal can target multiple branches if needed (e.g., deprecation in `RELEASE
 
 ## For AI agents
 
-AI coding assistants working on HyperSpy should:
-
-1. **Check this repository** for existing proposals related to their task
-2. **If no proposal exists** for a non-trivial AI-assisted change: create one before writing code
-3. **If a proposal exists**: follow the accepted plan, reference it in the implementation PR
-4. **Include the `Assisted-by:` trailer** in commits (per HyperSpy's AGENTS.md)
+See [AGENTS.md](AGENTS.md).
 
 ## License
 
