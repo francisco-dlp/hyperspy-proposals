@@ -19,7 +19,7 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
 
 1. **Create a markdown file** named `<PR_NUMBER>-<short-slug>.md` (e.g., `0042-hspy-spec.md`). Use the PR number you'll get when you open the PR — if unsure, use a placeholder and rename after.
 
-1. **Start the file with a YAML metadata block:**
+2. **Start the file with a YAML metadata block:**
 
    ```yaml
    ---
@@ -34,7 +34,7 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
    ---
    ```
 
-1. **Write the proposal.** Include:
+3. **Write the proposal.** Include:
 
    - The problem being solved
    - The proposed approach
@@ -43,11 +43,11 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
    - Questions for the community
    - References to relevant issues/PRs/discussions
 
-1. **Open a PR** to this repository with the markdown file.
+4. **Open a PR** to this repository with the markdown file.
 
-1. **Tag relevant people** for review.** Cross-reference from related issues in the target repos.
+5. **Tag relevant people** for review.** Cross-reference from related issues in the target repos.
 
-1. **Iterate.** Address review comments by pushing commits to your PR branch. Reviewers can see the changes and resolve/unresolve comments.
+6. **Iterate.** Address review comments by pushing commits to your PR branch. Reviewers can see the changes and resolve/unresolve comments.
 
 ## How review works
 
@@ -61,13 +61,13 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
 
 1. **Merge the proposal PR.** The proposal is now accepted and lives in this repo permanently.
 
-1. **Start implementation.** Open implementation PRs in the target repos (e.g., `hyperspy/hyperspy`, `hyperspy/rosettasciio`).
+2. **Start implementation.** Open implementation PRs in the target repos (e.g., `hyperspy/hyperspy`, `hyperspy/rosettasciio`).
 
-1. **Reference the proposal.** In each implementation PR, include: "Implements [proposal 0001](./0001-hspy-spec.md)."
+3. **Reference the proposal.** In each implementation PR, include: "Implements [proposal 0001](./0001-hspy-spec.md)."
 
-1. **Update proposal status.** After implementation is merged, update the proposal's metadata: `status: implemented`.
+4. **Update proposal status.** After implementation is merged, update the proposal's metadata: `status: implemented`.
 
-1. **Review the implementation.** The implementation PRs go through normal code review. Reviewers can check the implementation against the accepted proposal.
+5. **Review the implementation.** The implementation PRs go through normal code review. Reviewers can check the implementation against the accepted proposal.
 
 ## Proposal types
 
@@ -121,6 +121,20 @@ Available tasks:
 | `pixi run links` | Runs `lychee` link check only |
 | `pixi run frontmatter` | Runs the proposal frontmatter validator only |
 | `pixi run pre-commit` | Runs all pre-commit hooks on all files |
+
+### Formatting conventions
+
+The repository enforces [markdownlint](https://github.com/DavidAnson/markdownlint)
+rules defined in `.markdownlint.json`. Key conventions:
+
+- **Ordered lists** use sequential numbering (1, 2, 3…).
+- **Headings** use ATX style (`#`, `##`, `###`).
+- **Links** must have descriptive text — no bare URLs.
+- **Blank lines** must surround headings, lists, and fenced code blocks.
+- **Fenced code blocks** must specify a language.
+
+The full rule set is in `.markdownlint.json`. Run `pixi run fix` to auto-correct
+most issues.
 
 ### Alternative: conda
 
