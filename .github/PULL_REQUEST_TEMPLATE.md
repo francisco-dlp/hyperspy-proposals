@@ -1,27 +1,23 @@
 ## Proposal PR
 
-<!--
-  Your PR number IS the proposal number.
-  Name your file: <PR_NUMBER>-<short-slug>.md
-  (e.g., 0042-hspy-spec.md)
--->
+Your PR number is the proposal number. Name your file
+`<PR_NUMBER>-<short-slug>.md` (e.g., `0001-hspy-spec.md`).
 
-### Proposal type
+### Summary
 
-<!-- Select one: Architecture | Feature | Bugfix | Process -->
+<!-- Brief description of what this proposal is about. -->
 
-### Target repos
+### Checklist
 
-<!-- e.g., hyperspy/hyperspy, hyperspy/rosettasciio -->
+- [ ] The proposal file follows the [format](README.md#how-to-submit-a-proposal)
+      (YAML frontmatter, `####-<slug>.md` filename)
+- [ ] All CI checks are passing
+      ([pre-commit.ci](https://results.pre-commit.ci) fixes markdown issues automatically)
 
-### Target branch
+### Reviewers
 
-<!-- e.g., RELEASE_next_major, RELEASE_next_minor -->
+<!-- Tag maintainers of the affected repos. -->
 
-### AI-assisted
+### Related issues
 
-<!-- yes / no -->
-
-### Link to related issues
-
-<!-- Cross-reference issues/PRs/discussions from target repos -->
+<!-- Cross-reference issues/PRs/discussions from target repos. -->
