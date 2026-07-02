@@ -37,4 +37,4 @@ Every PR runs these checks:
 - **frontmatter-validation** — YAML metadata block is present, fields are valid, proposal number matches filename.
 - **ai-trailer** — commits include `Assisted-by: <tool>:<model>` trailers.
 
-Run checks locally with `pixi run check` (see the [README](REAMDE.md#running-checks-locally)).
+Run checks locally with `pixi run check` (see the [README](README.md#running-checks-locally)).
