@@ -17,13 +17,13 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
 
 ## How to submit a proposal
 
-1. **Create a markdown file** named `<PR_NUMBER>-<short-slug>.md` (e.g., `0042-hspy-spec.md`). Use the PR number you'll get when you open the PR — if unsure, use a placeholder and rename after.
+1. **Create a markdown file** named `<PR_NUMBER>-<short-slug>.md` (e.g., `0001-hspy-spec.md`). Use the PR number you'll get when you open the PR — if unsure, use a placeholder and rename after.
 
 2. **Start the file with a YAML metadata block:**
 
    ```yaml
    ---
-   proposal: 0042
+   proposal: 0001
    title: "hspy-spec — a metadata specification system for HyperSpy 3.0"
    type: Architecture          # Architecture | Feature | Bugfix | Process
    target_branch: hyperspy/hyperspy:RELEASE_next_major
