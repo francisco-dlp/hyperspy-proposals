@@ -20,7 +20,6 @@ Proposal file: `proposals/<PR_NUMBER>-<short-slug>.md`
 - [ ] **Scope** — what's in, what's explicitly NOT in
 - [ ] **References** — links to relevant issues/discussions
 - [ ] **Technical design** — mandatory: tree diagrams, encoding tables, code samples, etc.
-- [ ] No questions for the community in the proposal body (discussion belongs in PR review)
 - [ ] CI checks are passing ([pre-commit.ci](https://results.pre-commit.ci) fixes markdown issues automatically)
 
 ### Reviewers
