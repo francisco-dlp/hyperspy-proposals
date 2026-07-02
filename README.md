@@ -94,36 +94,41 @@ A proposal can target multiple branches if needed (e.g., deprecation in `RELEASE
 
 Every PR runs the checks defined in `.github/workflows/ci.yml`. You can run the same checks before pushing.
 
-### Install the tools
+### Quick start with conda
 
-You need **Python 3.10+** and **Node.js 20+**:
-
-```bash
-# Python dependencies
-python -m pip install pyyaml
-
-# Node dependencies
-npm install -g markdownlint-cli
-```
-
-The link check uses [lychee](https://github.com/lycheeverse/lychee). Install it from the [latest release](https://github.com/lycheeverse/lychee/releases/latest), for example:
+If you use [conda](https://conda.io/) or [mamba](https://mamba.readthedocs.io/):
 
 ```bash
-curl -sSfL https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-gnu.tar.gz | tar xz -C ~/.local/bin
+conda env create -f environment.yml
+conda activate hyperspy-proposals
+make install
+make check
 ```
 
-### Run the checks
+This installs Python, Node.js, `pyyaml`, `lychee`, `pre-commit`, and the local `markdownlint-cli`.
+
+### Quick start with pip
+
+If you prefer pip, install the Python dependencies and Node.js tools manually:
 
 ```bash
-# Validate proposal frontmatter
-python .github/scripts/validate-frontmatter.py
-
-# Lint markdown (respects .markdownlintignore)
-markdownlint .
-
-# Check links
-lychee --require-https .
+python -m pip install -r requirements.txt
+npm install
 ```
+
+You will still need to install [lychee](https://github.com/lycheeverse/lychee) separately (cargo install, GitHub release, or another package manager).
+
+### Available make targets
+
+| Target | What it runs |
+|---|---|
+| `make install` | Installs local npm dev dependencies (`markdownlint-cli`) |
+| `make check` | Runs frontmatter, markdown lint, and link checks |
+| `make fix` | Auto-fixes markdown issues where possible |
+| `make lint` | Runs `markdownlint` only |
+| `make links` | Runs `lychee` link check only |
+| `make frontmatter` | Runs the proposal frontmatter validator only |
+| `make pre-commit` | Runs all pre-commit hooks on all files |
 
 ### Pre-commit hook (optional but recommended)
 
@@ -132,14 +137,13 @@ lychee --require-https .
 Install it once:
 
 ```bash
-python -m pip install pre-commit
 pre-commit install
 ```
 
 Then `git commit` will run the hooks on staged files. To check all files manually:
 
 ```bash
-pre-commit run --all-files
+make pre-commit
 ```
 
 ## For AI agents
