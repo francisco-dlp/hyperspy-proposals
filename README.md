@@ -90,6 +90,58 @@ Proposals specify which branch the implementation targets:
 
 A proposal can target multiple branches if needed (e.g., deprecation in `RELEASE_next_minor`, removal in `RELEASE_next_major`).
 
+## Running checks locally
+
+Every PR runs the checks defined in `.github/workflows/ci.yml`. You can run the same checks before pushing.
+
+### Install the tools
+
+You need **Python 3.10+** and **Node.js 20+**:
+
+```bash
+# Python dependencies
+python -m pip install pyyaml
+
+# Node dependencies
+npm install -g markdownlint-cli
+```
+
+The link check uses [lychee](https://github.com/lycheeverse/lychee). Install it from the [latest release](https://github.com/lycheeverse/lychee/releases/latest), for example:
+
+```bash
+curl -sSfL https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-gnu.tar.gz | tar xz -C ~/.local/bin
+```
+
+### Run the checks
+
+```bash
+# Validate proposal frontmatter
+python .github/scripts/validate-frontmatter.py
+
+# Lint markdown (respects .markdownlintignore)
+markdownlint .
+
+# Check links
+lychee --require-https .
+```
+
+### Pre-commit hook (optional but recommended)
+
+[pre-commit](https://pre-commit.com/) runs the markdown and frontmatter checks automatically when you commit, including auto-fixes for many markdown issues.
+
+Install it once:
+
+```bash
+python -m pip install pre-commit
+pre-commit install
+```
+
+Then `git commit` will run the hooks on staged files. To check all files manually:
+
+```bash
+pre-commit run --all-files
+```
+
 ## For AI agents
 
 See [AGENTS.md](AGENTS.md).
