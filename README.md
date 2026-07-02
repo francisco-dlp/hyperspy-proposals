@@ -1,6 +1,6 @@
 # HyperSpy Proposals
 
-This repository hosts proposals for changes to the HyperSpy ecosystem — including `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hyperspy-ml`, `hyperspy/hspy-spec`, and extension packages (`LumiSpy/lumispy`, `pyxem/pyxem`, `pyxem/kikuchipy`, `hyperspy/exspy`, etc.).
+This repository hosts proposals for changes to the HyperSpy ecosystem — including `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hspy-spec`, `hyperspy/hyperspy-ml`, and extension packages (`LumiSpy/lumispy`, `pyxem/pyxem`, `pyxem/kikuchipy`, `hyperspy/exspy`, etc.).
 
 ## When is a proposal required?
 
@@ -19,22 +19,23 @@ AI coding tools can generate large amounts of code quickly. A proposal gives the
 
 1. **Create a markdown file** named `<PR_NUMBER>-<short-slug>.md` (e.g., `0042-hspy-spec.md`). Use the PR number you'll get when you open the PR — if unsure, use a placeholder and rename after.
 
-2. **Start the file with a YAML metadata block:**
+1. **Start the file with a YAML metadata block:**
 
-```yaml
----
-proposal: 0042
-title: "hspy-spec — a metadata specification system for HyperSpy 3.0"
-type: Architecture          # Architecture | Feature | Bugfix | Process
-target_branch: hyperspy/hyperspy:RELEASE_next_major
-target_repos: [hyperspy/hyperspy, hyperspy/rosettasciio, hyperspy/hspy-spec]
-status: review              # review | accepted | implemented | superseded
-ai_assisted: true
-created: 2026-06-30
----
-```
+   ```yaml
+   ---
+   proposal: 0042
+   title: "hspy-spec — a metadata specification system for HyperSpy 3.0"
+   type: Architecture          # Architecture | Feature | Bugfix | Process
+   target_branch: hyperspy/hyperspy:RELEASE_next_major
+   target_repos: [hyperspy/hyperspy, hyperspy/rosettasciio, hyperspy/hspy-spec]
+   status: review              # review | accepted | implemented | superseded
+   ai_assisted: true
+   created: 2026-06-30
+   ---
+   ```
 
-3. **Write the proposal.** Include:
+1. **Write the proposal.** Include:
+
    - The problem being solved
    - The proposed approach
    - What changes in each affected repo
@@ -42,17 +43,17 @@ created: 2026-06-30
    - Questions for the community
    - References to relevant issues/PRs/discussions
 
-4. **Open a PR** to this repository with the markdown file.
+1. **Open a PR** to this repository with the markdown file.
 
-5. **Tag relevant people** for review. Cross-reference from related issues in the target repos.
+1. **Tag relevant people** for review.** Cross-reference from related issues in the target repos.
 
-6. **Iterate.** Address review comments by pushing commits to your PR branch. Reviewers can see the changes and resolve/unresolve comments.
+1. **Iterate.** Address review comments by pushing commits to your PR branch. Reviewers can see the changes and resolve/unresolve comments.
 
 ## How review works
 
 - **Inline comments**: Reviewers comment on specific lines/paragraphs (standard GitHub PR review)
 - **Suggest changes**: Reviewers can propose edits directly
-- **No CI**: This repo contains only markdown — no code to test
+- **CI checks**: Every PR runs markdownlint, link-check, and frontmatter-validation
 - **Consensus**: A proposal is accepted when maintainers of the affected repos approve. For cross-repo proposals, maintainers of ALL affected repos should approve.
 - **Iterate**: Address review comments by pushing commits to your PR branch. Once consensus is reached, summarize feedback and revised decisions before merging.
 
@@ -60,13 +61,13 @@ created: 2026-06-30
 
 1. **Merge the proposal PR.** The proposal is now accepted and lives in this repo permanently.
 
-2. **Start implementation.** Open implementation PRs in the target repos (e.g., `hyperspy/hyperspy`, `hyperspy/rosettasciio`).
+1. **Start implementation.** Open implementation PRs in the target repos (e.g., `hyperspy/hyperspy`, `hyperspy/rosettasciio`).
 
-3. **Reference the proposal.** In each implementation PR, include: "Implements [proposal 0042](https://github.com/hyperspy/hyperspy-proposals/blob/main/0042-hspy-spec.md)."
+1. **Reference the proposal.** In each implementation PR, include: "Implements [proposal 0001](./0001-hspy-spec.md)."
 
-4. **Update proposal status.** After implementation is merged, update the proposal's metadata: `status: implemented`.
+1. **Update proposal status.** After implementation is merged, update the proposal's metadata: `status: implemented`.
 
-5. **Review the implementation.** The implementation PRs go through normal code review. Reviewers can check the implementation against the accepted proposal.
+1. **Review the implementation.** The implementation PRs go through normal code review. Reviewers can check the implementation against the accepted proposal.
 
 ## Proposal types
 
