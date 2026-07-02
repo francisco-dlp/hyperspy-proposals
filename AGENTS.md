@@ -30,10 +30,11 @@ created: 2026-07-01
 
 ## CI Checks
 
-Every PR runs three checks:
+Every PR runs these checks:
 
 - **markdownlint** — consistent formatting.
 - **link-check** — no broken URLs.
 - **frontmatter-validation** — YAML metadata block is present, fields are valid, proposal number matches filename.
+- **ai-trailer** — commits include `Assisted-by: <tool>:<model>` trailers.
 
-Run `python .github/scripts/validate-frontmatter.py` locally before pushing.
+Run checks locally with `pixi run check` (see the [README](REAMDE.md#running-checks-locally)).

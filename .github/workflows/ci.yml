@@ -6,39 +6,32 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  PIXI_VERSION: v0.66.0
+
 jobs:
-  markdownlint:
-    name: Markdown Lint
+  checks:
+    name: Checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: prefix-dev/setup-pixi@v0.10.0
         with:
-          node-version: "20"
-      - run: npm install -g markdownlint-cli
-      - run: markdownlint .
-
-  link-check:
-    name: Link Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: lycheeverse/lychee-action@v2
+          pixi-version: ${{ env.PIXI_VERSION }}
+      - name: Install npm tools
+        run: pixi run install
+      - name: Frontmatter validation
+        run: pixi run frontmatter
+      - name: Markdown lint
+        run: pixi run lint
+      - name: Link check
+        run: pixi run links
+      - name: Upload pixi.lock artifact
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          args: --verbose --no-progress --require-https '**/*.md'
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  frontmatter:
-    name: Frontmatter Validation
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install pyyaml
-      - run: python .github/scripts/validate-frontmatter.py
+          name: pixi-lock
+          path: pixi.lock
 
   ai-trailers:
     name: AI Trailer Check

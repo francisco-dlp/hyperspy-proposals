@@ -154,6 +154,19 @@ lychee --require-https .
 A `requirements.txt` file is provided for pip users, but it does not install Node.js or `lychee`.
 You will have to install those separately. Use this only if you cannot use pixi or conda.
 
+### Reproducing CI failures
+
+If a CI run fails, you can reproduce the exact environment locally. Download the
+`pixi.lock` artifact from the **Summary** tab of the GitHub Actions run, place it
+in the repository root, and run:
+
+```bash
+pixi install
+pixi run install
+```
+
+This will recreate the precise dependency versions used in CI.
+
 ### Pre-commit hook (optional but recommended)
 
 [pre-commit](https://pre-commit.com/) runs the markdown and frontmatter checks automatically when you commit, including auto-fixes for many markdown issues.
