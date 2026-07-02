@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Validate YAML frontmatter in proposal markdown files.
 
-Checks every root-level *.md file for:
+Checks every root-level ####-*.md proposal file for:
   - Required YAML frontmatter block
   - Required fields: proposal, title, type, target_branch, target_repos,
     status, ai_assisted, created
   - Valid enum values for type and status
   - ai_assisted as boolean
   - proposal number matches filename prefix
-  - README.md is skipped (not a proposal)
 
 Exits 0 if all files pass, 1 on any validation error.
 """
@@ -99,7 +98,7 @@ def _nonzero_str(value: object) -> bool:
 
 def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent.parent
-    md_files = sorted(p for p in repo_root.glob("*.md") if p.name != "README.md")
+    md_files = sorted(repo_root.glob("[0-9][0-9][0-9][0-9]-*.md"))
 
     all_errors: dict[str, list[str]] = {}
     errors = 0
