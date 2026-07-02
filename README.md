@@ -1,6 +1,6 @@
 # HyperSpy Proposals
 
-This repository hosts proposals for changes to the HyperSpy ecosystem — including `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hspy-spec`, `hyperspy/hyperspy-ml`, and extension packages (`LumiSpy/lumispy`, `pyxem/pyxem`, `pyxem/kikuchipy`, `hyperspy/exspy`, etc.).
+This repository hosts proposals for changes to repositories in the [hyperspy](https://github.com/hyperspy) GitHub organization — including `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hspy-spec`, and `hyperspy/hyperspy-ml`.
 
 ## When is a proposal required?
 

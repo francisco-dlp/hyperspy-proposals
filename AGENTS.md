@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is the central proposals repository for the HyperSpy ecosystem. It hosts markdown proposals for changes to `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hspy-spec`, `hyperspy/hyperspy-ml`, and extension packages.
+This is the central proposals repository for the [hyperspy](https://github.com/hyperspy) GitHub organization. It hosts markdown proposals for changes to `hyperspy/hyperspy`, `hyperspy/rosettasciio`, `hyperspy/hspy-spec`, and `hyperspy/hyperspy-ml`.
 
 ## Workflow for AI Agents
 
