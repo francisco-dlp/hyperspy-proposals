@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "20"
       - run: npm install -g markdownlint-cli
-      - run: markdownlint '**/*.md'
+      - run: markdownlint .
 
   link-check:
     name: Link Check
