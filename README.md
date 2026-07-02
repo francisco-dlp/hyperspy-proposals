@@ -92,43 +92,53 @@ A proposal can target multiple branches if needed (e.g., deprecation in `RELEASE
 
 ## Running checks locally
 
-Every PR runs the checks defined in `.github/workflows/ci.yml`. You can run the same checks before pushing.
+Every PR runs the checks defined in `.github/workflows/ci.yml`.
+You can run the same checks before pushing.
 
-### Quick start with conda
+### Recommended: pixi
+
+[pixi](https://pixi.sh/) is the fastest way to get a reproducible, project-local environment.
+Install pixi, then run:
+
+```bash
+pixi install
+pixi run install
+pixi run check
+```
+
+`pixi install` creates the conda environment in `.pixi/`.
+`pixi run install` installs the local `markdownlint-cli` from `package.json`.
+`pixi run check` runs frontmatter validation, markdown lint, and link checks.
+
+Available tasks:
+
+| Task | What it runs |
+|---|---|
+| `pixi run install` | Installs local npm dev dependencies (`markdownlint-cli`) |
+| `pixi run check` | Runs frontmatter, markdown lint, and link checks |
+| `pixi run fix` | Auto-fixes markdown issues where possible |
+| `pixi run lint` | Runs `markdownlint` only |
+| `pixi run links` | Runs `lychee` link check only |
+| `pixi run frontmatter` | Runs the proposal frontmatter validator only |
+| `pixi run pre-commit` | Runs all pre-commit hooks on all files |
+
+### Alternative: conda
 
 If you use [conda](https://conda.io/) or [mamba](https://mamba.readthedocs.io/):
 
 ```bash
 conda env create -f environment.yml
 conda activate hyperspy-proposals
-make install
-make check
-```
-
-This installs Python, Node.js, `pyyaml`, `lychee`, `pre-commit`, and the local `markdownlint-cli`.
-
-### Quick start with pip
-
-If you prefer pip, install the Python dependencies and Node.js tools manually:
-
-```bash
-python -m pip install -r requirements.txt
 npm install
+python .github/scripts/validate-frontmatter.py
+node_modules/.bin/markdownlint .
+lychee --require-https .
 ```
 
-You will still need to install [lychee](https://github.com/lycheeverse/lychee) separately (cargo install, GitHub release, or another package manager).
+### Not recommended: pip-only
 
-### Available make targets
-
-| Target | What it runs |
-|---|---|
-| `make install` | Installs local npm dev dependencies (`markdownlint-cli`) |
-| `make check` | Runs frontmatter, markdown lint, and link checks |
-| `make fix` | Auto-fixes markdown issues where possible |
-| `make lint` | Runs `markdownlint` only |
-| `make links` | Runs `lychee` link check only |
-| `make frontmatter` | Runs the proposal frontmatter validator only |
-| `make pre-commit` | Runs all pre-commit hooks on all files |
+A `requirements.txt` file is provided for pip users, but it does not install Node.js or `lychee`.
+You will have to install those separately. Use this only if you cannot use pixi or conda.
 
 ### Pre-commit hook (optional but recommended)
 
@@ -143,7 +153,7 @@ pre-commit install
 Then `git commit` will run the hooks on staged files. To check all files manually:
 
 ```bash
-make pre-commit
+pixi run pre-commit
 ```
 
 ## For AI agents
