@@ -1,5 +1,5 @@
 ---
-proposal: 0010
+proposal: "0010"
 title: "HyperSpy ecosystem security-work playbook"
 type: Process
 target_branch: hyperspy/.github:main
